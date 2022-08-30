@@ -19,7 +19,21 @@ namespace API_Workshop
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             // insert seed data here
-
+            modelBuilder.Entity<VideoGame>().HasData(
+                new VideoGame() { Id = 1, MainCharacterId = 1, StudioId = 1, Title = "Super Mario Brothers" }
+                );
+            modelBuilder.Entity<Studio>().HasData(
+                new Studio() { Id = 1, Name = "Nintendo", EmployeeCount = 6500}
+                );
+            modelBuilder.Entity<MainCharacter>().HasData(
+                new MainCharacter() { Id = 1, Name = "Mario" }
+                );
+            modelBuilder.Entity<Tag>().HasData(
+                new Tag() { Id = 1, Name = "Platformer" }
+                );
+            modelBuilder.Entity<GameTag>().HasData(
+                new GameTag() { Id = 1, VideoGameId = 1, TagId = 1 }
+                );
             base.OnModelCreating(modelBuilder);
         }
     }
